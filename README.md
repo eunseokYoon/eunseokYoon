@@ -34,8 +34,8 @@ portfolio-website/
 ### 1. 저장소 클론
 
 ```bash
-git clone https://github.com/eunseokYoon/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/eunseokYoon/eunseokYoon.git
+cd eunseokYoon
 ```
 
 ### 2. 의존성 설치
