@@ -1,9 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  body {
-    @apply font-sans antialiased;
-  }
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #1e293b;
+  --font-family-sans: Inter, sans-serif;
 }
