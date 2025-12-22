@@ -18,8 +18,18 @@ const GenerativeBackground = () => {
   const p5Instance = useRef(null);
 
   useEffect(() => {
+    console.log('🎨 GenerativeBackground useEffect started');
+    console.log('📦 p5 imported:', typeof p5);
+    console.log('📍 canvasRef.current:', canvasRef.current);
+
+    if (!canvasRef.current) {
+      console.error('❌ Canvas container not found!');
+      return;
+    }
+
     // Initialize p5.js sketch
     const sketch = (p) => {
+      console.log('🖼️ p5 sketch function called');
       let particles = [];
       let flowField = [];
       let cols, rows;
@@ -110,11 +120,22 @@ const GenerativeBackground = () => {
       }
 
       p.setup = () => {
-        let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+        console.log('🚀 p5 setup() called');
+
+        // Use actual window dimensions instead of p.windowWidth/Height
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        console.log('📏 Window size:', width, 'x', height);
+
+        let canvas = p.createCanvas(width, height);
+        console.log('✅ Canvas created:', canvas);
+
         canvas.parent(canvasRef.current);
+        console.log('✅ Canvas parented to:', canvasRef.current);
 
         p.colorMode(p.HSB, 360, 100, 100, 255);
         p.background(0, 0, 98); // Light background matching Tailwind
+        console.log('✅ Background set');
 
         // Calculate flow field dimensions
         cols = p.floor(p.width / scl);
@@ -124,9 +145,11 @@ const GenerativeBackground = () => {
         for (let i = 0; i < params.particleCount; i++) {
           particles.push(new Particle());
         }
+        console.log(`✅ ${params.particleCount} particles created`);
 
         // Generate initial flow field
         generateFlowField();
+        console.log('✅ Flow field generated');
       };
 
       function generateFlowField() {
@@ -142,7 +165,7 @@ const GenerativeBackground = () => {
             // Add second octave for complexity
             angle += p.noise(xoff * 2, yoff * 2, zoff * 0.5) * p.PI;
 
-            let v = p5.Vector.fromAngle(angle);
+            let v = p.createVector(p.cos(angle), p.sin(angle));
             v.setMag(params.noiseStrength);
 
             flowField.push(v);
@@ -165,7 +188,10 @@ const GenerativeBackground = () => {
           for (let particle of particles) {
             let d = p.dist(particle.pos.x, particle.pos.y, p.mouseX, p.mouseY);
             if (d < params.mouseInfluence) {
-              let force = p5.Vector.sub(particle.pos, p.createVector(p.mouseX, p.mouseY));
+              let force = p.createVector(
+                particle.pos.x - p.mouseX,
+                particle.pos.y - p.mouseY
+              );
               force.setMag(0.1);
               particle.applyForce(force);
             }
@@ -186,7 +212,7 @@ const GenerativeBackground = () => {
       };
 
       p.windowResized = () => {
-        p.resizeCanvas(p.windowWidth, p.windowHeight);
+        p.resizeCanvas(window.innerWidth, window.innerHeight);
 
         // Recalculate flow field dimensions
         cols = p.floor(p.width / scl);
@@ -208,10 +234,17 @@ const GenerativeBackground = () => {
     };
 
     // Create p5 instance
-    p5Instance.current = new p5(sketch);
+    console.log('🎬 Creating p5 instance...');
+    try {
+      p5Instance.current = new p5(sketch);
+      console.log('✅ p5 instance created successfully:', p5Instance.current);
+    } catch (error) {
+      console.error('❌ Error creating p5 instance:', error);
+    }
 
     // Cleanup on unmount
     return () => {
+      console.log('🧹 Cleaning up p5 instance');
       if (p5Instance.current) {
         p5Instance.current.remove();
       }
