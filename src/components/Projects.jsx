@@ -1,144 +1,172 @@
 import React from 'react';
 
 /**
- * Projects Section Component
- * - Grid layout for project cards
- * - Each card includes: image, title, description, tags, links
- * - Responsive: 1 col (mobile), 2 cols (tablet), 3 cols (desktop)
+ * Projects Section - Editorial Magazine Style
+ *
+ * Design Philosophy:
+ * - List-based layout, not cards
+ * - Each project as a featured article
+ * - Emphasis on typography and hierarchy
+ * - Generous spacing and asymmetry
  */
 const Projects = () => {
   const projects = [
     {
       id: 1,
+      year: "2024",
       title: "약속 조율 및 정산 시스템",
-      description: "중간 지점 추천 및 AI 기반 장소 추천을 제공하는 웹 애플리케이션",
-      image: "https://via.placeholder.com/400x300/3B82F6/FFFFFF?text=Project+1",
-      tags: ["React", "Spring Boot", "PostgreSQL", "AI"],
+      description: "중간 지점 추천 및 AI 기반 장소 추천을 제공하는 웹 애플리케이션. 카카오 OAuth 로그인, 실시간 위치 추적, AI 장소 추천 시스템을 구현했습니다.",
+      tags: ["React", "Spring Boot", "PostgreSQL", "AI", "Kakao OAuth"],
       github: "https://github.com",
       demo: "#",
-      features: [
-        "카카오 OAuth 로그인",
-        "실시간 위치 추적",
-        "AI 장소 추천 시스템"
-      ]
+      index: "01"
     },
     {
       id: 2,
+      year: "2024",
       title: "포트폴리오 웹사이트",
-      description: "반응형 개인 포트폴리오 웹사이트",
-      image: "https://via.placeholder.com/400x300/8B5CF6/FFFFFF?text=Project+2",
-      tags: ["React", "Tailwind CSS", "Vite"],
+      description: "타이포그래피 중심의 에디토리얼 디자인을 적용한 반응형 개인 포트폴리오. Fraunces와 Manrope 폰트를 사용하여 독창적인 디자인을 구현했습니다.",
+      tags: ["React", "Tailwind CSS", "Vite", "Vercel"],
       github: "https://github.com",
       demo: "#",
-      features: [
-        "반응형 디자인",
-        "SEO 최적화",
-        "Vercel 자동 배포"
-      ]
+      index: "02"
     },
     {
       id: 3,
+      year: "2023",
       title: "프로젝트 3",
-      description: "프로젝트 설명을 여기에 작성하세요",
-      image: "https://via.placeholder.com/400x300/EC4899/FFFFFF?text=Project+3",
+      description: "프로젝트 설명을 여기에 작성하세요. 주요 기능과 사용한 기술 스택, 그리고 프로젝트를 통해 배운 점 등을 상세히 기록합니다.",
       tags: ["JavaScript", "Node.js", "MongoDB"],
       github: "https://github.com",
       demo: "#",
-      features: [
-        "기능 1",
-        "기능 2",
-        "기능 3"
-      ]
+      index: "03"
     },
   ];
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <section id="projects" className="py-32 px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-20 animate-slide-up">
+          <span className="text-sm font-mono tracking-[0.3em] uppercase text-[var(--color-terracotta)] dark:text-[var(--color-warm-orange)] mb-8 block">
+            02 — Selected Works
+          </span>
+          <h2 className="heading-display text-5xl md:text-6xl lg:text-7xl mb-6">
             Projects
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl font-light max-w-2xl text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
             제가 진행한 주요 프로젝트들을 소개합니다
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project) => (
-            <div
+        {/* Projects List */}
+        <div className="space-y-24">
+          {projects.map((project, idx) => (
+            <article
               key={project.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2 transition-transform"
+              className={`group animate-slide-up stagger-${idx + 1}`}
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                {/* Left Column - Index & Year */}
+                <div className="lg:col-span-2">
+                  <div className="space-y-4">
+                    <div className="heading-display text-6xl md:text-7xl text-[var(--color-terracotta)] dark:text-[var(--color-warm-orange)] opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                      {project.index}
+                    </div>
+                    <div className="text-sm font-mono tracking-wider text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
+                      {project.year}
+                    </div>
+                  </div>
+                </div>
 
-              {/* Project Content */}
-              <div className="p-6">
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {project.title}
-                </h3>
+                {/* Main Content */}
+                <div className="lg:col-span-10 space-y-6">
+                  {/* Title */}
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold group-hover:text-[var(--color-terracotta)] dark:group-hover:text-[var(--color-warm-orange)] transition-colors duration-300">
+                    {project.title}
+                  </h3>
 
-                {/* Description */}
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {project.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-lg md:text-xl font-light leading-relaxed text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)] max-w-3xl">
+                    {project.description}
+                  </p>
 
-                {/* Features */}
-                <ul className="mb-4 space-y-1">
-                  {project.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-gray-500 flex items-start">
-                      <span className="mr-2">•</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-3">
+                    {project.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 border border-[var(--color-mid-brown)] dark:border-[var(--color-soft-white)] border-opacity-30 dark:border-opacity-30 rounded-sm text-sm font-mono text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)] hover:border-[var(--color-terracotta)] dark:hover:border-[var(--color-warm-orange)] hover:text-[var(--color-terracotta)] dark:hover:text-[var(--color-warm-orange)] transition-all duration-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium"
+                  {/* Links */}
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-2 text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)] hover:text-[var(--color-terracotta)] dark:hover:text-[var(--color-warm-orange)] transition-colors duration-200"
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-3">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-300 font-medium"
-                  >
-                    Demo
-                  </a>
+                      <span className="font-medium">View on GitHub</span>
+                      <svg
+                        className="w-5 h-5 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-2 text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)] hover:text-[var(--color-terracotta)] dark:hover:text-[var(--color-warm-orange)] transition-colors duration-200"
+                    >
+                      <span className="font-medium">Live Demo</span>
+                      <svg
+                        className="w-5 h-5 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              {/* Divider */}
+              {idx < projects.length - 1 && (
+                <div className="h-px bg-[var(--color-mid-brown)] dark:bg-[var(--color-soft-white)] opacity-20 mt-24" />
+              )}
+            </article>
           ))}
+        </div>
+
+        {/* View All Projects CTA */}
+        <div className="mt-24 text-center animate-slide-up stagger-4">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 text-lg md:text-xl font-medium text-[var(--color-terracotta)] dark:text-[var(--color-warm-orange)] hover:gap-5 transition-all duration-300"
+          >
+            <span>View All Projects on GitHub</span>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
