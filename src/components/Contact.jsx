@@ -11,9 +11,15 @@ import React from 'react';
 const Contact = () => {
   const contactLinks = [
     {
+      label: "Phone",
+      value: "010-2886-9711",
+      href: "tel:01028869711",
+      type: "phone"
+    },
+    {
       label: "Email",
-      value: "your.email@example.com",
-      href: "mailto:your.email@example.com",
+      value: "yhy1044@gmail.com",
+      href: "mailto:yhy1044@gmail.com",
       type: "email"
     },
     {
@@ -23,20 +29,20 @@ const Contact = () => {
       type: "link"
     },
     {
-      label: "LinkedIn",
-      value: "linkedin.com/in/eunseok-yoon",
-      href: "https://linkedin.com/in/eunseok-yoon",
+      label: "Blog",
+      value: "silverstone0.tistory.com",
+      href: "https://silverstone0.tistory.com/",
       type: "link"
     },
   ];
 
   return (
-    <section id="contact" className="py-32 px-6 md:px-12 lg:px-24">
+    <section id="contact" className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Section Label */}
         <div className="mb-16 animate-slide-up">
           <span className="text-sm font-mono tracking-[0.3em] uppercase text-[var(--color-terracotta)] dark:text-[var(--color-warm-orange)]">
-            03 — Get In Touch
+            03 — Contact
           </span>
         </div>
 
@@ -51,7 +57,7 @@ const Contact = () => {
               </span>
             </h2>
             <p className="text-xl md:text-2xl font-light leading-relaxed text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
-              프로젝트 협업이나 문의사항이 있으시면
+              궁금한 사항이 있으시면,
               <br />
               언제든지 연락주세요!
             </p>
@@ -94,7 +100,7 @@ const Contact = () => {
             {/* CTA */}
             <div className="pt-8">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:yhy1044@gmail.com"
                 className="btn-primary inline-block text-center rounded-sm"
               >
                 Send Message

@@ -32,7 +32,7 @@ const Footer = () => {
           <div>
             <h3 className="heading-display text-3xl mb-4">윤은석</h3>
             <p className="text-sm font-light text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
-              Full Stack Developer
+              Backend Developer
               <br />
               Based in Seoul, Korea
             </p>

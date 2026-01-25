@@ -24,40 +24,29 @@ const Hero = () => {
         {/* Small intro label */}
         <div className="mb-8 animate-fade-in">
           <span className="inline-block px-4 py-2 rounded-full border border-[var(--color-terracotta)] text-sm font-mono text-[var(--color-terracotta)] tracking-wide">
-            PORTFOLIO 2025
+            PORTFOLIO 2026
           </span>
         </div>
 
-        {/* Main heading - Huge typography */}
+        {/* Main heading - Reduced size */}
         <div className="mb-12">
-          <h1 className="heading-display text-[5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] leading-[0.9] mb-4 animate-slide-up stagger-1">
+          <h1 className="heading-display text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] leading-[0.95] mb-6 animate-slide-up stagger-1">
             윤은석
           </h1>
 
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 animate-slide-up stagger-2">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-semibold tracking-tight text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
-              Full Stack Developer
+          <div className="flex flex-col gap-4 animate-slide-up stagger-2">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-sans font-semibold tracking-tight text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
+              Backend Developer
             </h2>
 
-            {/* Decorative line */}
-            <div className="hidden md:block flex-1 mx-8 h-[2px] bg-[var(--color-terracotta)] self-center max-w-xs" />
+            <p className="text-base md:text-lg lg:text-xl font-light max-w-2xl text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)] opacity-80">
+              안정적이고 확장 가능한 서버를 설계하며, 효율적인 백엔드 시스템을 구축합니다.
+            </p>
           </div>
         </div>
 
-        {/* Introduction paragraph - Editorial style */}
-        <div className="max-w-2xl mb-16 animate-slide-up stagger-3">
-          <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-balance text-[var(--color-mid-brown)] dark:text-[var(--color-soft-white)]">
-            사용자 경험을 최우선으로 생각하며,
-            <br />
-            <span className="font-medium text-[var(--color-terracotta)] dark:text-[var(--color-warm-orange)]">
-              끊임없이 배우고 성장하는
-            </span>{' '}
-            개발자입니다.
-          </p>
-        </div>
-
         {/* CTA Buttons - Refined style */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-20 animate-slide-up stagger-4">
+        <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-slide-up stagger-3">
           <a
             href="#about"
             className="btn-primary inline-block text-center rounded-sm"
@@ -87,7 +76,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll indicator - Minimal */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in stagger-5">
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in stagger-4">
           <div className="flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
             <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
             <svg
